@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理員登錄</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>管理員登錄</h2>
+        <form method="POST">
+            <input type="text" name="username" placeholder="用戶名" required>
+            <input type="password" name="password" placeholder="密碼" required>
+            <button type="submit">登錄</button>
+        </form>
+    </div>
+</body>
+</html>

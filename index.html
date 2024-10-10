@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太空爪子遊戲</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div id="ui-overlay">
+            <div id="score">得分: <span id="score-value">0</span></div>
+            <div id="rank">排名: <span id="rank-value">-</span></div>
+            <div id="buttons">
+                <button id="grab-one">一抓入魂 (100元)</button>
+                <button id="grab-five">霸氣五連 (500元)</button>
+                <button id="grab-ten">十抓九中 (1000元)</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script type="module" src="3d_models.js"></script>
+    <script type="module" src="game.js"></script>
+</body>
+</html>

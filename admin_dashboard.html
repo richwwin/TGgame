@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理員儀表板</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+    <header>
+        <h1>太空爪子遊戲管理系統</h1>
+        <a href="{{ url_for('logout') }}" class="logout-btn">登出</a>
+    </header>
+    <main>
+        <section class="prizes">
+            <h2>獎品管理</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>名稱</th>
+                        <th>類型</th>
+                        <th>庫存</th>
+                        <th>概率</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prize in prizes %}
+                    <tr>
+                        <td>{{ prize.name }}</td>
+                        <td>{{ prize.type }}</td>
+                        <td>{{ prize.stock }}</td>
+                        <td>{{ prize.probability }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('update_prize') }}">
+                                <input type="hidden" name="prize_id" value="{{ prize._id }}">
+                                <input type="number" name="stock" value="{{ prize.stock }}" min="0">
+                                <input type="number" name="probability" value="{{ prize.probability }}" min="0" max="1" step="0.01">
+                                <button type="submit">更新</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        <section class="users">
+            <h2>用戶排行榜 (前10名)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>用戶ID</th>
+                        <th>分數</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.telegram_id }}</td>
+                        <td>{{ user.score }}</td>
+                        <td>
+                            <form method="POST" action="{{ url_for('update_user') }}">
+                                <input type="hidden" name="user_id" value="{{ user._id }}">
+                                <input type="number" name="score" value="{{ user.score }}" min="0">
+                                <button type="submit">更新分數</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
